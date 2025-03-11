@@ -11,7 +11,45 @@
 
 package com.HDT6;
 
-public class TreeMap 
-{
-    
+import java.util.*;
+
+public class TreeMap implements Map {
+    private java.util.TreeMap<String, Pokemon> pokemonMap = new java.util.TreeMap<>();
+
+    @Override
+    public void addPokemon(Pokemon pokemon) {
+        pokemonMap.put(pokemon.getName(), pokemon);
+    }
+
+    @Override
+    public Pokemon getPokemon(String name) {
+        return pokemonMap.get(name);
+    }
+
+    @Override
+    public void displayAll() {
+        pokemonMap.values().forEach(System.out::println);
+    }
+
+    @Override
+    public List<Pokemon> getPokemonsByType(String type) {
+        List<Pokemon> result = new ArrayList<>();
+        for (Pokemon p : pokemonMap.values()) {
+            if (p.getType1().equalsIgnoreCase(type) || p.getType2().equalsIgnoreCase(type)) {
+                result.add(p);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<Pokemon> getPokemonsByAbility(String ability) {
+        List<Pokemon> result = new ArrayList<>();
+        for (Pokemon p : pokemonMap.values()) {
+            if (p.getAbilities().contains(ability)) {
+                result.add(p);
+            }
+        }
+        return result;
+    }
 }

@@ -11,7 +11,13 @@
 
 package com.HDT6;
 
-public interface Map<K,V>
-{
+import java.util.List;
 
+public interface Map {
+    void addPokemon(Pokemon pokemon);
+    Pokemon getPokemon(String name);
+    void displayAll();
+    List<Pokemon> getPokemonsByType(String type);
+    List<Pokemon> getPokemonsByAbility(String ability);
 }
+

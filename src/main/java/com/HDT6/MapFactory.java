@@ -12,5 +12,12 @@
 package com.HDT6;
 
 public class MapFactory {
-    
+    public static Map createMap(int choice) {
+        switch (choice) {
+            case 1: return new HashMap();
+            case 2: return new TreeMap();
+            case 3: return new LinkedHashMap();
+            default: throw new IllegalArgumentException("Opción inválida");
+        }
+    }
 }
