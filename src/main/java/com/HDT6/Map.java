@@ -19,5 +19,6 @@ public interface Map {
     void displayAll();
     List<Pokemon> getPokemonsByType(String type);
     List<Pokemon> getPokemonsByAbility(String ability);
+    List<Pokemon> getAllPokemons();
 }
 

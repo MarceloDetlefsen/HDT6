@@ -52,4 +52,9 @@ public class LinkedHashMap implements Map {
         }
         return result;
     }
+
+    @Override
+    public List<Pokemon> getAllPokemons() {
+        return new ArrayList<>(pokemonMap.values());
+    }
 }

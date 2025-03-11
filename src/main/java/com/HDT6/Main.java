@@ -17,25 +17,23 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // 1️⃣ Selección del tipo de Map a usar
         System.out.println("Seleccione el tipo de Map:");
         System.out.println("1. HashMap");
         System.out.println("2. TreeMap");
         System.out.println("3. LinkedHashMap");
         System.out.print("Ingrese su opción: ");
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Consumir la línea
+        scanner.nextLine();
 
-        // 2️⃣ Creación del Map según elección del usuario
         Map pokemonMap = MapFactory.createMap(choice);
         System.out.println("Mapa seleccionado exitosamente.\n");
 
-        // 3️⃣ Carga de datos desde el CSV
         String filePath = "pokemon_data_pokeapi.csv";
         LecturaPokemon.cargarDatos(pokemonMap, filePath);        
         System.out.println("Datos cargados correctamente.\n");
 
-        // 4️⃣ Menú de opciones para interactuar con los Pokémon
+        Coleccion userCollection = new Coleccion();
+        
         while (true) {
             System.out.println("\nMenú de opciones:");
             System.out.println("1. Agregar un Pokémon a la colección del usuario");
@@ -46,7 +44,7 @@ public class Main {
             System.out.println("6. Salir");
             System.out.print("Seleccione una opción: ");
             int option = scanner.nextInt();
-            scanner.nextLine(); // Consumir la línea
+            scanner.nextLine();
 
             switch (option) {
                 case 1:
@@ -54,8 +52,7 @@ public class Main {
                     String name = scanner.nextLine();
                     Pokemon foundPokemon = pokemonMap.getPokemon(name);
                     if (foundPokemon != null) {
-                        pokemonMap.addPokemon(foundPokemon);
-                        System.out.println("Pokémon agregado con éxito.");
+                        userCollection.addPokemon(foundPokemon);
                     } else {
                         System.out.println("Error: El Pokémon no se encuentra en la base de datos.");
                     }
@@ -73,17 +70,13 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Pokémon en la colección ordenados por tipo:");
-                    List<Pokemon> userPokemons = pokemonMap.getPokemonsByType(""); // Obtener todos
-                    userPokemons.sort(Comparator.comparing(Pokemon::getType1)); // Ordenar por tipo
-                    for (Pokemon p : userPokemons) {
-                        System.out.println(p.getName() + " - " + p.getType1());
-                    }
+                    System.out.println("Pokémon en la colección del usuario ordenados por tipo:");
+                    userCollection.displayByType();
                     break;
 
                 case 4:
                     System.out.println("Todos los Pokémon ordenados por tipo:");
-                    List<Pokemon> allPokemons = new ArrayList<>(pokemonMap.getPokemonsByType(""));
+                    List<Pokemon> allPokemons = new ArrayList<>(pokemonMap.getAllPokemons());
                     allPokemons.sort(Comparator.comparing(Pokemon::getType1));
                     for (Pokemon p : allPokemons) {
                         System.out.println(p.getName() + " - " + p.getType1());
