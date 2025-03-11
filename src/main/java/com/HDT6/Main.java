@@ -6,7 +6,7 @@
  * Creación: 10/03/2025
  * última modificación: 10/03/2025
  * File Name: Main.java
- * Descripción: Clase principal.
+ * Descripción: Este archivo contiene la clase Main que se encarga de manejar la interacción con el usuario.
  */
 
 package com.HDT6;
