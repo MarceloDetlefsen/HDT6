@@ -23,21 +23,33 @@ public class LecturaPokemon {
             String line;
             br.readLine(); // Saltar encabezado
             while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data.length < 8) continue;
+                // Usa split con una expresión regular para manejar comillas correctamente
+                String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 
-                String name = data[0];
-                String type1 = data[2];
-                String type2 = data[3].isEmpty() ? "None" : data[3];
-                String abilities = data[7];
+                if (data.length < 10) continue;
 
-                Pokemon pokemon = new Pokemon(name, type1, type2, abilities);
+                String name = data[0].trim();
+                int pokedexNumber = Integer.parseInt(data[1].trim()); // Convertir a entero
+                String type1 = data[2].trim();
+                String type2 = data[3].isEmpty() ? "None" : data[3].trim();
+                String classification = data[4].trim();
+                double height = Double.parseDouble(data[5].trim()); // Convertir a double
+                double weight = Double.parseDouble(data[6].trim()); // Convertir a double
+                String abilities = data[7].replaceAll("\"", "").trim(); // Eliminar comillas en habilidades
+                int generation = Integer.parseInt(data[8].trim()); // Convertir a entero
+                boolean isLegendary = data[9].trim().equalsIgnoreCase("Yes");
+
+                Pokemon pokemon = new Pokemon(name, pokedexNumber, type1, type2, classification, height, weight, abilities, generation, isLegendary);
                 pokemonMap.addPokemon(pokemon);
             }
 
             System.out.println("Archivo leído correctamente.\n");
         } catch (IOException | NullPointerException e) {
             System.out.println("Error al leer el archivo.");
+        } catch (NumberFormatException e) {
+            System.out.println("Error de formato en el archivo CSV. Verifique que los datos sean correctos.");
+            e.printStackTrace();
         }
     }
 }
+

@@ -58,12 +58,22 @@ public class Main {
                     }
                     break;
 
-                case 2:
+                    case 2:
                     System.out.print("Ingrese el nombre del Pokémon: ");
                     String searchName = scanner.nextLine();
                     Pokemon searchedPokemon = pokemonMap.getPokemon(searchName);
                     if (searchedPokemon != null) {
-                        System.out.println(searchedPokemon);
+                        System.out.println("\nDatos del Pokémon:");
+                        System.out.println("Nombre: " + searchedPokemon.getName());
+                        System.out.println("Número en la Pokédex: " + searchedPokemon.getPokedexNumber());
+                        System.out.println("Tipo 1: " + searchedPokemon.getType1());
+                        System.out.println("Tipo 2: " + searchedPokemon.getType2());
+                        System.out.println("Clasificación: " + searchedPokemon.getClassification());
+                        System.out.println("Altura (m): " + searchedPokemon.getHeight());
+                        System.out.println("Peso (kg): " + searchedPokemon.getWeight());
+                        System.out.println("Habilidades: " + searchedPokemon.getAbilities());
+                        System.out.println("Generación: " + searchedPokemon.getGeneration());
+                        System.out.println("¿Es legendario? " + (searchedPokemon.isLegendary() ? "Sí" : "No"));
                     } else {
                         System.out.println("Error: El Pokémon no está en la colección.");
                     }
