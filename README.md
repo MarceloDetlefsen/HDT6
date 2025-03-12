@@ -34,7 +34,7 @@ En un `LinkedHashMap`, obtener todos los valores tiene una complejidad de **O(n)
 
 ### 2. **Ordenar los Pokémon por tipo1**
 
-Ordenar una lista de **n** elementos tiene una complejidad de **O(n log n)** si se usa un algoritmo eficiente como MergeSort o QuickSort. En Java, el método `sort` de `Collections` usa TimSort, que tiene una complejidad de **O(n log n)** en el peor de los casos.
+Ordenar una lista de **n** elementos tiene una complejidad de **O(n log n)** si se usa un algoritmo eficiente. En este caso, el método `sort` de `Collections` en Java es TimSort, el cual tiene una complejidad de **O(n log n)** en el peor de los casos. Cabe destacar que el ordenamiento se realiza despues de extraer los valores un `ArrayList`, el cual fue mi forma de guardado para extraer los valores de Map seleccionada de la `JCF`. Esto se debe a que permite aprovechar la eficiencia y simplicidad de trabajar con Collections.sort.
 
 ### 3. **Mostrar el nombre y tipo1 de cada Pokémon**
 
