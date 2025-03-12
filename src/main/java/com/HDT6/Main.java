@@ -7,16 +7,23 @@
  * última modificación: 10/03/2025
  * File Name: Main.java
  * Descripción: Este archivo contiene la clase Main que se encarga de manejar la interacción con el usuario.
+ * Código comentado con DeepSeek
  */
 
 package com.HDT6;
 
 import java.util.*;
 
+/**
+ * Clase principal que maneja la interacción con el usuario y ejecuta el programa.
+ * Permite al usuario seleccionar un tipo de Map, cargar datos de Pokemons desde un archivo CSV,
+ * y realizar diversas operaciones como agregar Pokemons a una colección, mostrar datos, filtrar por tipo y habilidad, etc.
+ */
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        // Menú para seleccionar el tipo de Map
         System.out.println("Seleccione el tipo de Map:");
         System.out.println("1. HashMap");
         System.out.println("2. TreeMap");
@@ -25,15 +32,19 @@ public class Main {
         int choice = scanner.nextInt();
         scanner.nextLine();
 
+        // Crear el Map seleccionado utilizando la fábrica
         Map pokemonMap = MapFactory.createMap(choice);
         System.out.println("Mapa seleccionado exitosamente.\n");
 
+        // Cargar datos de Pokemons desde el archivo CSV
         String filePath = "pokemon_data_pokeapi.csv";
-        LecturaPokemon.cargarDatos(pokemonMap, filePath);        
+        LecturaPokemon.cargarDatos(pokemonMap, filePath);
         System.out.println("Datos cargados correctamente.\n");
 
+        // Crear una colección para el usuario
         Coleccion userCollection = new Coleccion();
-        
+
+        // Menú principal del programa
         while (true) {
             System.out.println("\nMenú de opciones:");
             System.out.println("1. Agregar un Pokémon a la colección del usuario");
@@ -48,6 +59,7 @@ public class Main {
 
             switch (option) {
                 case 1:
+                    // Agregar un Pokémon a la colección del usuario
                     System.out.print("Ingrese el nombre del Pokémon a agregar: ");
                     String name = scanner.nextLine();
                     Pokemon foundPokemon = pokemonMap.getPokemon(name);
@@ -58,7 +70,8 @@ public class Main {
                     }
                     break;
 
-                    case 2:
+                case 2:
+                    // Mostrar los datos de un Pokémon específico
                     System.out.print("Ingrese el nombre del Pokémon: ");
                     String searchName = scanner.nextLine();
                     Pokemon searchedPokemon = pokemonMap.getPokemon(searchName);
@@ -80,11 +93,13 @@ public class Main {
                     break;
 
                 case 3:
+                    // Mostrar los Pokémons en la colección del usuario ordenados por tipo
                     System.out.println("Pokémon en la colección del usuario ordenados por tipo:");
                     userCollection.displayByType();
                     break;
 
                 case 4:
+                    // Mostrar todos los Pokémons existentes ordenados por tipo
                     System.out.println("Todos los Pokémon ordenados por tipo:");
                     List<Pokemon> allPokemons = new ArrayList<>(pokemonMap.getAllPokemons());
                     allPokemons.sort(Comparator.comparing(Pokemon::getType1));
@@ -94,6 +109,7 @@ public class Main {
                     break;
 
                 case 5:
+                    // Mostrar Pokémons con una habilidad específica
                     System.out.print("Ingrese la habilidad a buscar: ");
                     String ability = scanner.nextLine();
                     List<Pokemon> pokemonsWithAbility = pokemonMap.getPokemonsByAbility(ability);
@@ -107,11 +123,13 @@ public class Main {
                     break;
 
                 case 6:
+                    // Salir del programa
                     System.out.println("Saliendo del programa...");
                     scanner.close();
                     return;
 
                 default:
+                    // Opción inválida
                     System.out.println("Opción inválida, intente de nuevo.");
             }
         }

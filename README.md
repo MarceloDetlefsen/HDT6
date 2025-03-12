@@ -22,15 +22,26 @@
 La operación #4 muestra el nombre y tipo1 de todos los Pokémon, ordenados por tipo1.
 
 **Analísis de su complejidad paso a paso:**
+
     • **Obtener todos los Pokémon del Map**
+
         En un LinkedHashMap, obtener todos los valores tiene una complejidad de *O(n)*, donde n es el número de Pokémon en el mapa. Esto se debe a que se deben recorrer todos los elementos del mapa, y su tamaño depende exclusivamente de la cantidad de ellos.
+
     • **Ordenar los Pokémon por tipo1**
+
         Ordenar una lista de n elementos tiene una complejidad de *O(n log n)* si se usa un algoritmo eficiente como MergeSort o QuickSort. En Java, el método sort de Collections usa TimSort tiene una complejidad de *O(n log n)* en el de los peor casos.
+
     • **Mostrar el nombre y tipo1 de cada Pokémon**
+
         Recorrer la lista ordenada y mostrar los datos tiene una complejidad de *O(n)*.
 
+
 **Complejidad Total:** La complejidad total de la operación #4 es la suma de las complejidades de cada paso:
+
     Obtener todos los Pokémon: *O(n)*
+
     Ordenar los Pokémon: *O(n log n)*
+
     Mostrar los Pokémon: *O(n)*
+
     *O(n)* + *O(n log n)* + *O(n)* = **O(n log n)**

@@ -7,6 +7,7 @@
  * última modificación: 11/03/2025
  * File Name: Testeo.java
  * Descripción: Este archivo contiene la clase Testeo que se encarga de realizar pruebas unitarias a las clases del programa.
+ * Código comentado con DeepSeek
  */
 
 package com.HDT6;
@@ -15,8 +16,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
+/**
+ * Clase que contiene pruebas unitarias para verificar el correcto funcionamiento de las clases del programa.
+ * Se enfoca en probar la funcionalidad de agregar Pokémons a la colección y filtrar Pokémons por tipo.
+ */
 public class Testeo {
 
+    /**
+     * Prueba unitaria para verificar que un Pokémon se agrega correctamente a la colección del usuario.
+     */
     @Test
     public void testAgregarPokemonAColeccion() {
         // Crear un mapa y una colección
@@ -38,6 +46,9 @@ public class Testeo {
         assertEquals("Pikachu", pokemonEnColeccion.getName(), "El nombre del Pokémon debería ser Pikachu.");
     }
 
+    /**
+     * Prueba unitaria para verificar que se pueden obtener correctamente los Pokémons de un tipo específico.
+     */
     @Test
     public void testObtenerPokemonsPorTipo() {
         // Crear un mapa
