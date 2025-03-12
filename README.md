@@ -13,35 +13,40 @@
     ```bash 
     javac -d out src/main/java/com/HDT6/*.java
 
-4. Ejecutar el programa:
+4. Copiar el CSV en "out" para garantizar que funcione al ejecutarse desde la terminal:
+    ```bash
+    cp src/main/resources/pokemon_data_pokeapi.csv out/
+
+5. Ejecutar el programa:
     ```bash 
     cd out
     java com.HDT6.Main
 
 # Complejidad de Tiempo de la Operación #4
+
 La operación #4 muestra el nombre y tipo1 de todos los Pokémon, ordenados por tipo1.
 
-**Analísis de su complejidad paso a paso:**
+## Análisis de su complejidad paso a paso:
 
-    • **Obtener todos los Pokémon del Map**
+### 1. **Obtener todos los Pokémon del Map**
 
-        En un LinkedHashMap, obtener todos los valores tiene una complejidad de *O(n)*, donde n es el número de Pokémon en el mapa. Esto se debe a que se deben recorrer todos los elementos del mapa, y su tamaño depende exclusivamente de la cantidad de ellos.
+En un `LinkedHashMap`, obtener todos los valores tiene una complejidad de **O(n)**, donde **n** es el número de Pokémon en el mapa. Esto se debe a que se deben recorrer todos los elementos del mapa, y su tamaño depende exclusivamente de la cantidad de ellos.
 
-    • **Ordenar los Pokémon por tipo1**
+### 2. **Ordenar los Pokémon por tipo1**
 
-        Ordenar una lista de n elementos tiene una complejidad de *O(n log n)* si se usa un algoritmo eficiente como MergeSort o QuickSort. En Java, el método sort de Collections usa TimSort tiene una complejidad de *O(n log n)* en el de los peor casos.
+Ordenar una lista de **n** elementos tiene una complejidad de **O(n log n)** si se usa un algoritmo eficiente como MergeSort o QuickSort. En Java, el método `sort` de `Collections` usa TimSort, que tiene una complejidad de **O(n log n)** en el peor de los casos.
 
-    • **Mostrar el nombre y tipo1 de cada Pokémon**
+### 3. **Mostrar el nombre y tipo1 de cada Pokémon**
 
-        Recorrer la lista ordenada y mostrar los datos tiene una complejidad de *O(n)*.
+Recorrer la lista ordenada y mostrar los datos tiene una complejidad de **O(n)**.
 
+## Complejidad Total
 
-**Complejidad Total:** La complejidad total de la operación #4 es la suma de las complejidades de cada paso:
+La complejidad total de la operación #4 es la suma de las complejidades de cada paso:
 
-    Obtener todos los Pokémon: *O(n)*
+- Obtener todos los Pokémon: **O(n)**
+- Ordenar los Pokémon: **O(n log n)**
+- Mostrar los Pokémon: **O(n)**
 
-    Ordenar los Pokémon: *O(n log n)*
-
-    Mostrar los Pokémon: *O(n)*
-
-    *O(n)* + *O(n log n)* + *O(n)* = **O(n log n)**
+**Complejidad Total:**  
+**O(n) + O(n log n) + O(n) = O(n log n)**
